@@ -48,7 +48,16 @@ def main() -> None:
 
     compile_source()
     run_command([sys.executable, "scripts/harness_doctor.py"])
+    run_command([sys.executable, "scripts/check_docs.py"])
     run_command([sys.executable, "-m", "unittest", "discover", "-s", "tests"])
+    run_command(
+        [
+            sys.executable,
+            "-m",
+            "harness_demo.cli",
+            "Cannot log in to production",
+        ]
+    )
     print("Quality gate: ok")
 
 

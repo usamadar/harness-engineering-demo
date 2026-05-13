@@ -4,12 +4,27 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 REQUIRED_PATHS = (
+    ".github/ISSUE_TEMPLATE/agent-task.md",
+    ".github/pull_request_template.md",
+    ".github/workflows/quality.yml",
     "AGENTS.md",
+    "Makefile",
     "README.md",
+    "docs/adr/0001-keep-demo-standard-library-only.md",
+    "docs/adr/0002-route-business-rules-through-router.md",
     "docs/architecture.md",
     "docs/harness-map.md",
+    "docs/harness-scorecard.md",
+    "docs/prompt-recipes.md",
+    "docs/runbook.md",
+    "docs/testing-strategy.md",
     "tasks/01-add-sla-classification.md",
+    "tasks/02-add-customer-success-routing.md",
     "scripts/check.py",
+    "scripts/check_docs.py",
+    "scripts/harness_doctor.py",
+    "tests/test_cli.py",
+    "tests/test_harness_doctor.py",
     "tests/test_router.py",
 )
 
