@@ -11,10 +11,11 @@ setup noise and distract from the harness concept.
 
 ## Decision
 
-The application and checks use the Python standard library only.
+The application, checks, and dependency-free linter use the Python standard
+library only.
 
 ## Consequences
 
-The demo is easy to run on a clean machine. The tradeoff is that linting,
-formatting, coverage, and static typing are represented by lightweight local
-checks instead of full production-grade tools.
+The demo is easy to run on a clean machine. The tradeoff is that formatting,
+coverage, and static typing are represented by lightweight local checks instead
+of full production-grade tools.

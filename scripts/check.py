@@ -47,6 +47,7 @@ def main() -> None:
     """Runs all local verification for the repository."""
 
     compile_source()
+    run_command([sys.executable, "scripts/lint.py"])
     run_command([sys.executable, "scripts/harness_doctor.py"])
     run_command([sys.executable, "scripts/check_docs.py"])
     run_command([sys.executable, "-m", "unittest", "discover", "-s", "tests"])

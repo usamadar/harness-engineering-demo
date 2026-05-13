@@ -6,6 +6,7 @@ agent needs before it can make reliable changes.
 ## Test Layers
 
 - Syntax compilation catches broken Python before tests run.
+- Lint checks catch formatting issues, missing docstrings, and architecture drift.
 - Unit tests validate routing behavior in `TicketRouter`.
 - CLI smoke tests verify the command-line adapter stays connected to the app.
 - Harness checks verify the repo still contains the context agents need.

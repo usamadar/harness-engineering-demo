@@ -24,7 +24,9 @@ python3 scripts/check.py
 Expected result:
 
 ```text
+Lint: ok
 Harness doctor: ok
+Documentation checks: ok
 Quality gate: ok
 ```
 
@@ -32,6 +34,9 @@ Quality gate: ok
 
 If imports fail, confirm the command is running from the repo root. The quality
 gate sets `PYTHONPATH=src` automatically.
+
+If lint fails, inspect the reported file and line. The linter enforces basic
+formatting, docstrings, and the rule that business logic stays out of the CLI.
 
 If the harness doctor fails, restore the missing harness file or update
 `scripts/harness_doctor.py` only when the harness contract intentionally changes.

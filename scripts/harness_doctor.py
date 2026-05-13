@@ -23,6 +23,7 @@ REQUIRED_PATHS = (
     "scripts/check.py",
     "scripts/check_docs.py",
     "scripts/harness_doctor.py",
+    "scripts/lint.py",
     "tests/test_cli.py",
     "tests/test_harness_doctor.py",
     "tests/test_router.py",

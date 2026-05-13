@@ -14,6 +14,7 @@ workflow queues. The important part is the harness around it:
 - `docs/adr/` records architectural decisions.
 - `tasks/01-add-sla-classification.md` is a ready-made practice task.
 - `scripts/check.py` runs the repo's quality gate.
+- `scripts/lint.py` enforces style and architecture rules without dependencies.
 - `scripts/harness_doctor.py` checks whether the repo remains agent-ready.
 - `.github/` contains CI and collaboration templates.
 
