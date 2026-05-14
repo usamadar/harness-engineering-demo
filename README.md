@@ -13,9 +13,13 @@ workflow queues. The important part is the harness around it:
 - `docs/harness-scorecard.md` defines the 8/10 harness target.
 - `docs/adr/` records architectural decisions.
 - `tasks/01-add-sla-classification.md` is a ready-made practice task.
-- `scripts/check.py` runs the repo's quality gate.
+- `scripts/check.py` orchestrates the repo's quality gate.
+- `scripts/check_syntax.py` verifies Python files compile.
 - `scripts/lint.py` enforces style and architecture rules without dependencies.
 - `scripts/harness_doctor.py` checks whether the repo remains agent-ready.
+- `scripts/check_docs.py` checks documentation contracts.
+- `scripts/check_tests.py` runs unit tests.
+- `scripts/check_smoke.py` verifies the CLI path.
 - `.github/` contains CI and collaboration templates.
 
 ## Quick Start
@@ -30,7 +34,7 @@ PYTHONPATH=src python3 -m harness_demo.cli "Cannot log in to production"
 1. Show the team the tiny app in `src/harness_demo`.
 2. Show the harness files: `AGENTS.md`, `docs/`, `tasks/`, and `scripts/`.
 3. Ask Codex or another coding agent to complete `tasks/01-add-sla-classification.md`.
-4. Run `python3 scripts/check.py`.
+4. Show the separate feedback scripts in `scripts/`, then run `python3 scripts/check.py`.
 5. Review `docs/harness-scorecard.md` and discuss why this is an 8/10 harness.
 6. Discuss what made the agent effective: clear intent, local context, fast tests,
    mechanical verification, governance, and repo memory.

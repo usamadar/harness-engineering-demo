@@ -9,7 +9,7 @@ teach the discipline, small enough to understand in one sitting.
 | --- | ---: | --- |
 | Context | 8 | `AGENTS.md`, architecture docs, prompt recipes, task briefs |
 | Execution | 8 | Standard-library app, `Makefile`, one-command local quality gate |
-| Feedback | 8 | Linting, unit tests, syntax compilation, CLI smoke test, harness doctor |
+| Feedback | 8 | Dedicated syntax, lint, doctor, docs, unit-test, and smoke checks |
 | Governance | 8 | Architecture lint, templates, design constraints, ADR expectation |
 | Memory | 8 | Architecture docs, ADRs, runbook, scorecard, task archive |
 
@@ -24,7 +24,8 @@ path from context to implementation to verification:
 2. Read the architecture and task brief.
 3. Change the smallest relevant module.
 4. Add tests.
-5. Let linting catch style and architecture drift.
+5. Let the dedicated feedback scripts catch syntax, style, architecture, docs,
+   behavior, and smoke-test failures.
 6. Run `python3 scripts/check.py`.
 7. Explain the result using the PR template or final response.
 

@@ -16,11 +16,13 @@ This file names the parts of the repo that help an agent produce better work.
 
 ## Feedback Layer
 
-- `python3 scripts/check.py` runs all verification.
+- `scripts/check.py` orchestrates all feedback checks from one command.
+- `scripts/check_syntax.py` verifies Python files compile.
 - `scripts/lint.py` checks formatting, docstrings, and architecture boundaries.
-- Unit tests validate routing behavior.
 - `scripts/harness_doctor.py` checks whether harness files are present.
 - `scripts/check_docs.py` verifies key documentation contracts.
+- `scripts/check_tests.py` runs the unit tests that validate routing behavior.
+- `scripts/check_smoke.py` verifies the command-line path still works.
 
 ## Governance Layer
 

@@ -1,64 +1,47 @@
-"""Runs the full quality gate for the harness engineering demo."""
+"""Orchestrates the full quality gate for the harness engineering demo."""
 
-import compileall
-import os
 import subprocess
 import sys
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-SOURCE_ROOT = REPO_ROOT / "src"
+CHECK_COMMANDS = (
+    ("syntax", "scripts/check_syntax.py"),
+    ("lint and architecture", "scripts/lint.py"),
+    ("harness doctor", "scripts/harness_doctor.py"),
+    ("documentation contracts", "scripts/check_docs.py"),
+    ("unit tests", "scripts/check_tests.py"),
+    ("CLI smoke", "scripts/check_smoke.py"),
+)
 
 
 class QualityGateError(Exception):
     """Raised when one or more quality-gate steps fail."""
 
 
-def run_command(command: list[str]) -> None:
-    """Runs a quality-gate command from the repository root.
+def run_check(name: str, script_path: str) -> None:
+    """Runs one quality-gate check from the repository root.
 
     Args:
-        command: Command and arguments to execute.
+        name: Human-readable check name.
+        script_path: Script path relative to the repository root.
 
     Raises:
         QualityGateError: Raised when the command exits unsuccessfully.
     """
 
-    environment = os.environ.copy()
-    environment["PYTHONPATH"] = str(SOURCE_ROOT)
-    result = subprocess.run(command, cwd=REPO_ROOT, check=False, env=environment)
+    command = [sys.executable, script_path]
+    result = subprocess.run(command, cwd=REPO_ROOT, check=False)
     if result.returncode != 0:
-        formatted_command = " ".join(command)
-        raise QualityGateError(f"Command failed: {formatted_command}")
-
-
-def compile_source() -> None:
-    """Compiles Python source files to catch syntax errors.
-
-    Raises:
-        QualityGateError: Raised when source compilation fails.
-    """
-
-    if not compileall.compile_dir(SOURCE_ROOT, quiet=1):
-        raise QualityGateError("Source compilation failed.")
+        raise QualityGateError(f"{name} check failed: {script_path}")
 
 
 def main() -> None:
     """Runs all local verification for the repository."""
 
-    compile_source()
-    run_command([sys.executable, "scripts/lint.py"])
-    run_command([sys.executable, "scripts/harness_doctor.py"])
-    run_command([sys.executable, "scripts/check_docs.py"])
-    run_command([sys.executable, "-m", "unittest", "discover", "-s", "tests"])
-    run_command(
-        [
-            sys.executable,
-            "-m",
-            "harness_demo.cli",
-            "Cannot log in to production",
-        ]
-    )
+    for name, script_path in CHECK_COMMANDS:
+        run_check(name, script_path)
+
     print("Quality gate: ok")
 
 
