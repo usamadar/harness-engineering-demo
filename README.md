@@ -29,16 +29,6 @@ python3 scripts/check.py
 PYTHONPATH=src python3 -m harness_demo.cli "Cannot log in to production"
 ```
 
-## Teaching Flow
-
-1. Show the team the tiny app in `src/harness_demo`.
-2. Show the harness files: `AGENTS.md`, `docs/`, `tasks/`, and `scripts/`.
-3. Ask Codex or another coding agent to complete `tasks/01-add-sla-classification.md`.
-4. Show the separate feedback scripts in `scripts/`, then run `python3 scripts/check.py`.
-5. Review `docs/harness-scorecard.md` and discuss why this is an 8/10 harness.
-6. Discuss what made the agent effective: clear intent, local context, fast tests,
-   mechanical verification, governance, and repo memory.
-
 ## The Lesson
 
 Prompting gives an agent intent. A harness gives it traction.
