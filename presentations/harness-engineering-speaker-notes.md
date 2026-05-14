@@ -45,7 +45,7 @@ finishes, show `git diff` and run `python3 scripts/check.py`.
 Optional live moment: move `docs/runbook.md` temporarily and run the quality
 gate. Restore it afterwards. The point is that drift becomes visible.
 
-## 10. Build the harness in layers, not in one heroic rewrite.
+## 10. Build the harness in layers.
 
 Give the team a practical path: first instructions and one command, then CI and
 runbooks, then architecture checks and recurring cleanup.
